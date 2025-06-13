@@ -15,7 +15,7 @@ public class CategoryMapper {
                 .build();
     }
 
-    public static CategoryResponse toCategoryResponse(Review category){
+    public static CategoryResponse toCategoryResponse(Category category){
         return CategoryResponse.builder()
                 .id(category.getId())
                 .gender(category.getGender())

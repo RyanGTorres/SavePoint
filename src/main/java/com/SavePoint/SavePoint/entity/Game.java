@@ -1,6 +1,7 @@
 package com.SavePoint.SavePoint.entity;
 
 import com.SavePoint.SavePoint.enums.Platform;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -44,5 +45,6 @@ public class Game {
     private List<Category> categoryList;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy ="game", cascade = CascadeType.ALL)
+    @JsonIgnore
     private List<Review> reviewList;
 }

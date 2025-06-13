@@ -1,5 +1,6 @@
 package com.SavePoint.SavePoint.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -30,5 +31,6 @@ public class Review {
 
     @ManyToOne
     @JoinColumn(name = "game_id")
+    @JsonBackReference
     private Game game;
 }

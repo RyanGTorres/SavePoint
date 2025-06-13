@@ -3,6 +3,7 @@ package com.SavePoint.SavePoint.service;
 import com.SavePoint.SavePoint.entity.Game;
 import com.SavePoint.SavePoint.repository.GameRepository;
 import lombok.RequiredArgsConstructor;
+
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -12,13 +13,13 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class GameService {
 
-    private GameRepository gameRepository;
+    private final GameRepository gameRepository;
 
     public Game save(Game game){
         return gameRepository.save(game);
     }
 
-    public List<Game> findAll (){
+    public List<Game> findAll(){
         return gameRepository.findAll();
     }
 

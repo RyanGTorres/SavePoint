@@ -8,7 +8,6 @@ import com.SavePoint.SavePoint.entity.Category;
 import com.SavePoint.SavePoint.entity.Game;
 import com.SavePoint.SavePoint.entity.Review;
 import lombok.experimental.UtilityClass;
-import org.springframework.stereotype.Component;
 
 import java.util.List;
 
@@ -37,12 +36,13 @@ public class GameMapper {
 
     public GameResponse toGameResponse (Game game){
         List<ReviewResponse> reviews = game.getReviewList().stream()
-                .map(review -> ReviewMapper.toReviewResponse )
+                .map(ReviewMapper::toReviewResponse)
                 .toList();
 
-        List<CategoryResponse> categories = game.getReviewList().stream()
+        List<CategoryResponse> categories = game.getCategoryList().stream()
                 .map(CategoryMapper::toCategoryResponse)
                 .toList();
+
 
         return GameResponse.builder()
                 .id(game.getId())
@@ -51,8 +51,8 @@ public class GameMapper {
                 .releaseDate(game.getReleaseDate())
                 .plataform(game.getPlatform())
                 .developer(game.getDeveloper())
-                .reviews()
-                .categories()
+                .reviews(reviews)
+                .categories(categories)
                 .build();
     }
 }
