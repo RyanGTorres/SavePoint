@@ -12,7 +12,7 @@ public record ReviewResponse(Long id,
                              String content,
                              double rating,
                              LocalDate date,
-                             Game game)
+                             GameSimpleResponse game)
 
 {
 }
