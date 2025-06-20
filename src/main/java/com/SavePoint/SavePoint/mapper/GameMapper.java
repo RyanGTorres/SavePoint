@@ -1,6 +1,7 @@
 package com.SavePoint.SavePoint.mapper;
 
 import com.SavePoint.SavePoint.controller.request.GameRequest;
+import com.SavePoint.SavePoint.controller.request.ReviewRequest;
 import com.SavePoint.SavePoint.controller.response.CategoryResponse;
 import com.SavePoint.SavePoint.controller.response.GameResponse;
 import com.SavePoint.SavePoint.controller.response.ReviewResponse;
@@ -16,7 +17,7 @@ public class GameMapper {
     public static Game toGame (GameRequest request){
 
         List<Review> reviews = request.reviews().stream()
-                .map(reviewId -> Review.builder().id(reviewId).build() )
+                .map(reviewId ->  Review.builder().id(reviewId).build())
                 .toList();
 
         List<Category> categories = request.categories().stream()

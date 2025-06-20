@@ -44,7 +44,7 @@ public class Game {
     )
     private List<Category> categoryList;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy ="game", cascade = CascadeType.ALL)
+    @OneToMany(fetch = FetchType.LAZY, mappedBy ="game", cascade = CascadeType.MERGE)
     @JsonIgnore
     private List<Review> reviewList;
 }

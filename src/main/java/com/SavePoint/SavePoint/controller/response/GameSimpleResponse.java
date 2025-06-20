@@ -1,4 +1,9 @@
 package com.SavePoint.SavePoint.controller.response;
 
-public class GameSimpleResponse {
+import lombok.Builder;
+
+@Builder
+public record GameSimpleResponse(Long id,
+                                 String title)
+{
 }

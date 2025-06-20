@@ -1,4 +1,7 @@
 package com.SavePoint.SavePoint.controller.request;
 
-public class GameSimpleRequest {
+import lombok.Builder;
+
+@Builder
+public record GameSimpleRequest(Long id){
 }
