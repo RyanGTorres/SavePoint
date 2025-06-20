@@ -8,6 +8,7 @@ import lombok.experimental.UtilityClass;
 
 @UtilityClass
 public class CategoryMapper {
+
     public static Category toCategory(CategoryRequest categoryRequest){
         return Category
                 .builder()
@@ -16,9 +17,11 @@ public class CategoryMapper {
     }
 
     public static CategoryResponse toCategoryResponse(Category category){
-        return CategoryResponse.builder()
-                .id(category.getId())
+        return CategoryResponse
+                .builder()
                 .gender(category.getGender())
+                .id(category.getId())
                 .build();
     }
 }
+
