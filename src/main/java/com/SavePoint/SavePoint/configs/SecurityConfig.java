@@ -29,6 +29,8 @@ public class SecurityConfig {
                     .authorizeHttpRequests(authorize -> authorize
                             .requestMatchers(HttpMethod.POST, "/savepoint/auth/register").permitAll()
                             .requestMatchers(HttpMethod.POST, "/savepoint/auth/login").permitAll()
+                            .requestMatchers(HttpMethod.GET, "/api/api-docs/**").permitAll()
+                            .requestMatchers(HttpMethod.GET, "/swagger/**").permitAll()
                             .anyRequest().authenticated()
                     )
                     .addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class)

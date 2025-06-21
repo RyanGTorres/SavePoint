@@ -1,5 +1,6 @@
 package com.SavePoint.SavePoint.controller;
 
+import com.SavePoint.SavePoint.controller.interfaces.CategoryController;
 import com.SavePoint.SavePoint.controller.request.CategoryRequest;
 import com.SavePoint.SavePoint.controller.response.CategoryResponse;
 import com.SavePoint.SavePoint.entity.Category;
@@ -17,7 +18,8 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/savepoint/category")
 @RequiredArgsConstructor
-public class CategoryController {
+
+public class CategoryControllerImpl implements CategoryController {
 
     private final CategoryService categoryService;
 
@@ -28,13 +30,13 @@ public class CategoryController {
                 .toList());
     }
 
+
     @GetMapping("/{id}")
     public ResponseEntity<CategoryResponse> findById(@PathVariable Long id){
         return categoryService.findById(id)
                 .map(category -> ResponseEntity.ok(CategoryMapper.toCategoryResponse(category)) )
                 .orElse(ResponseEntity.notFound().build());
     }
-
 
     @PostMapping
     public ResponseEntity <CategoryResponse> saveCategory(@Valid @RequestBody CategoryRequest request){

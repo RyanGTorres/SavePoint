@@ -42,13 +42,14 @@ public class ReviewService {
             reviewToUpdate.setRating(review.getRating());
             reviewToUpdate.setContent(review.getContent());
 
-            if (reviewToUpdate.getGame() != null && reviewToUpdate.getGame().getId() != null) {
+            if (review.getGame() != null && review.getGame().getId() != null) {
                 Game game = new Game();
-                game.setId(reviewToUpdate.getId());
+                game.setId(review.getGame().getId());
                 reviewToUpdate.setGame(game);
             }
 
-            return Optional.of(reviewRepository.save(reviewToUpdate));
+            reviewRepository.save(reviewToUpdate);
+            return Optional.of(reviewToUpdate);
 
         }
         return Optional.empty();

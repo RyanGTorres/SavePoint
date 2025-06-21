@@ -1,4 +1,8 @@
 package com.SavePoint.SavePoint.controller.response;
 
-public record LoginResponse(String token) {
+import io.swagger.v3.oas.annotations.media.Schema;
+
+public record LoginResponse(
+        @Schema(type = "String",description = "Token do JWT")
+        String token) {
 }

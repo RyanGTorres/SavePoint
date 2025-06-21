@@ -1,12 +1,14 @@
 package com.SavePoint.SavePoint.controller;
 
 
+import com.SavePoint.SavePoint.controller.interfaces.ReviewController;
 import com.SavePoint.SavePoint.controller.request.ReviewRequest;
 import com.SavePoint.SavePoint.controller.response.ReviewResponse;
 import com.SavePoint.SavePoint.entity.Review;
 import com.SavePoint.SavePoint.mapper.GameMapper;
 import com.SavePoint.SavePoint.mapper.ReviewMapper;
 import com.SavePoint.SavePoint.service.ReviewService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,7 +20,8 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/savepoint/review")
 @RequiredArgsConstructor
-public class ReviewController {
+
+public class ReviewControllerImpl implements ReviewController {
 
     private final ReviewService reviewService;
 
@@ -46,11 +49,11 @@ public class ReviewController {
         return ResponseEntity.status(HttpStatus.CREATED).body(ReviewMapper.toReviewResponse(reviewResponse));
     }
 
-//    @PostMapping("/{id}")
-//    public ResponseEntity<ReviewResponse> update(@PathVariable Long id, @RequestBody ReviewRequest request){
-//        return reviewService.update(id , GameMapper.toGame(request))
-//                .map(movie -> ResponseEntity.ok(GameMapper.toGameResponse(movie)))
-//                .orElse(ResponseEntity.notFound().build());    }
+    @PostMapping("/{id}")
+    public ResponseEntity<ReviewResponse> update(@PathVariable Long id, @RequestBody ReviewRequest request){
+        return reviewService.update(id , ReviewMapper.toReview(request))
+                .map(movie -> ResponseEntity.ok(ReviewMapper.toReviewResponse(movie)))
+                .orElse(ResponseEntity.notFound().build());    }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> delete (@PathVariable Long id){

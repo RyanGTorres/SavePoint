@@ -1,10 +1,18 @@
 package com.SavePoint.SavePoint.controller;
 
+import com.SavePoint.SavePoint.controller.interfaces.GameController;
 import com.SavePoint.SavePoint.controller.request.GameRequest;
 import com.SavePoint.SavePoint.controller.response.GameResponse;
 import com.SavePoint.SavePoint.entity.Game;
 import com.SavePoint.SavePoint.mapper.GameMapper;
 import com.SavePoint.SavePoint.service.GameService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.ArraySchema;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -17,7 +25,8 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/savepoint/game")
 @RequiredArgsConstructor
-public class GameController {
+
+public class GameControllerImpl implements GameController {
 
     private final GameService gameService;
 
@@ -28,15 +37,13 @@ public class GameController {
             return ResponseEntity.status(HttpStatus.CREATED).body(GameMapper.toGameResponse(gameSaved));
     }
 
-//    @PostMapping("/{id}")
-//    public ResponseEntity<GameResponse> update (@PathVariable Long id,@Valid @RequestBody GameRequest request){
-//
-//            Game gameUpdate = GameMapper.toGame(request);
-//            Optional<Game> gameSaveUpdate = gameService.update(gameUpdate, id);
-//            return gameSaveUpdate
-//                    .map(updated -> ResponseEntity.ok(GameMapper.toGameResponse(updated)))
-//                    .orElse(ResponseEntity.notFound().build());
-//    }
+    @PostMapping("/{id}")
+    public ResponseEntity<GameResponse> update (@PathVariable Long id,@Valid @RequestBody GameRequest request){
+            return gameService.update(id, GameMapper.toGame(request))
+                    .map(game -> ResponseEntity.ok(GameMapper.toGameResponse(game)))
+                    .orElse(ResponseEntity.notFound().build());
+    }
+
 
     @GetMapping
     public ResponseEntity <List<GameResponse>> findAll (){
@@ -45,12 +52,15 @@ public class GameController {
                 .toList());
     }
 
+
+
     @GetMapping("/{id}")
     public ResponseEntity<GameResponse> findById(@PathVariable Long id){
         return gameService.findById(id)
                 .map(encontrado -> ResponseEntity.ok(GameMapper.toGameResponse(encontrado)))
                 .orElse(ResponseEntity.notFound().build());
     }
+
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> delete(@PathVariable Long id){
