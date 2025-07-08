@@ -184,57 +184,6 @@ SERVER_PORT: 8080
 SPRING_PROFILES_ACTIVE: dev
 ```
 
-## Testes
-
-```bash
-# Executar todos os testes
-./mvnw test
-
-# Executar testes com relatório
-./mvnw test jacoco:report
-```
-
-## Exemplo de Uso
-
-### Criando um jogo
-```bash
-curl -X POST http://localhost:8080/api/games \
-  -H "Content-Type: application/json" \
-  -H "Authorization: Bearer {seu_token}" \
-  -d '{
-    "title": "The Legend of Zelda: Breath of the Wild",
-    "description": "Um jogo de aventura em mundo aberto",
-    "genre": "Adventure",
-    "platform": "Nintendo Switch",
-    "releaseDate": "2017-03-03",
-    "price": 59.99
-  }'
-```
-
-### Criando uma review
-```bash
-curl -X POST http://localhost:8080/api/games/1/reviews \
-  -H "Content-Type: application/json" \
-  -H "Authorization: Bearer {seu_token}" \
-  -d '{
-    "rating": 5,
-    "comment": "Jogo incrível! Uma das melhores experiências que já tive.",
-    "recommendedAge": "E10+"
-  }'
-```
-
-## Contribuindo
-
-1. Faça um fork do projeto
-2. Crie uma branch para sua feature (`git checkout -b feature/AmazingFeature`)
-3. Commit suas mudanças (`git commit -m 'Add some AmazingFeature'`)
-4. Push para a branch (`git push origin feature/AmazingFeature`)
-5. Abra um Pull Request
-
-## Licença
-
-Este projeto está sob a licença MIT. Veja o arquivo `LICENSE` para mais detalhes.
-
 ## 👨‍💻 Autor
 
 **RyanGTorres** - [GitHub](https://github.com/RyanGTorres)
