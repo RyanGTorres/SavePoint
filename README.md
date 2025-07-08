@@ -1,8 +1,8 @@
-# 🎮 SavePoint API
+# SavePoint API
 
 Uma API REST moderna para gerenciamento de catálogo de jogos com sistema de reviews e autenticação JWT.
 
-## 📋 Sobre o Projeto
+## Sobre o Projeto
 
 SavePoint é uma API desenvolvida em Spring Boot que permite:
 
@@ -12,7 +12,7 @@ SavePoint é uma API desenvolvida em Spring Boot que permite:
 - **Documentação interativa** - Interface Swagger/OpenAPI
 - **Containerização** - Deploy com Docker e PostgreSQL
 
-## 🚀 Tecnologias Utilizadas
+## Tecnologias Utilizadas
 
 ### Backend
 - **Java 21** - Linguagem principal
@@ -34,7 +34,7 @@ SavePoint é uma API desenvolvida em Spring Boot que permite:
 - **Lombok** - Redução de boilerplate
 - **Maven** - Gerenciamento de dependências
 
-## 📁 Estrutura do Projeto
+## Estrutura do Projeto
 
 ```
 savepoint/
@@ -57,14 +57,14 @@ savepoint/
 └── README.md
 ```
 
-## 🔧 Pré-requisitos
+## Pré-requisitos
 
 - Java 21+
 - Maven 3.8+
 - Docker e Docker Compose
 - PostgreSQL (se não usar Docker)
 
-## 🐳 Instalação com Docker
+## Instalação com Docker
 
 ### 1. Clone o repositório
 ```bash
@@ -81,7 +81,7 @@ docker-compose up -d
 - **API:** http://localhost:8080
 - **Swagger UI:** http://localhost:8080/swagger-ui.html
 
-## 💻 Instalação Manual
+## Instalação Manual
 
 ### 1. Configure o banco PostgreSQL
 ```sql
@@ -104,7 +104,7 @@ export JWT_SECRET=seu_jwt_secret_aqui
 ./mvnw spring-boot:run
 ```
 
-## 🔐 Autenticação
+## Autenticação
 
 A API utiliza JWT para autenticação. Para acessar endpoints protegidos:
 
@@ -132,7 +132,7 @@ POST /api/auth/login
 Authorization: Bearer {seu_jwt_token}
 ```
 
-## 📚 Endpoints Principais
+## Endpoints Principais
 
 ### Autenticação
 - `POST /api/auth/register` - Registrar usuário
@@ -152,11 +152,11 @@ Authorization: Bearer {seu_jwt_token}
 - `PUT /api/reviews/{id}` - Atualizar review (autenticado)
 - `DELETE /api/reviews/{id}` - Deletar review (autenticado)
 
-## 📖 Documentação da API
+## Documentação da API
 
 Acesse a documentação interativa em: http://localhost:8080/swagger-ui.html
 
-## 🗄️ Banco de Dados
+##  Banco de Dados
 
 O projeto utiliza **Flyway** para versionamento do banco de dados. As migrações estão em `src/main/resources/db/migration/`.
 
@@ -166,7 +166,7 @@ O projeto utiliza **Flyway** para versionamento do banco de dados. As migraçõe
 - `reviews` - Reviews dos jogos
 - `categories` - Categorias de jogos (se aplicável)
 
-## 🛠️ Configuração
+##  Configuração
 
 ### Variáveis de Ambiente
 ```yaml
@@ -184,7 +184,7 @@ SERVER_PORT: 8080
 SPRING_PROFILES_ACTIVE: dev
 ```
 
-## 🧪 Testes
+## Testes
 
 ```bash
 # Executar todos os testes
@@ -194,7 +194,7 @@ SPRING_PROFILES_ACTIVE: dev
 ./mvnw test jacoco:report
 ```
 
-## 📝 Exemplo de Uso
+## Exemplo de Uso
 
 ### Criando um jogo
 ```bash
@@ -223,7 +223,7 @@ curl -X POST http://localhost:8080/api/games/1/reviews \
   }'
 ```
 
-## 🤝 Contribuindo
+## Contribuindo
 
 1. Faça um fork do projeto
 2. Crie uma branch para sua feature (`git checkout -b feature/AmazingFeature`)
@@ -231,13 +231,7 @@ curl -X POST http://localhost:8080/api/games/1/reviews \
 4. Push para a branch (`git push origin feature/AmazingFeature`)
 5. Abra um Pull Request
 
-## 🐛 Problemas Conhecidos
-
-- [ ] Implementar cache para consultas frequentes
-- [ ] Adicionar rate limiting
-- [ ] Melhorar validações de entrada
-
-## 📄 Licença
+## Licença
 
 Este projeto está sob a licença MIT. Veja o arquivo `LICENSE` para mais detalhes.
 
